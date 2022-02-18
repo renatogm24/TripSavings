@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Show book</title>
+<title>Grace Recipe</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -17,36 +17,14 @@
 <script type="text/javascript" src="js/app.js"></script>
 </head>
 <body>
-	<div class="container justify-center">
-		<h1 class="text-danger">All expenses</h1>
-		
-		<table class="table">
-			<thead>
-				<tr>
-					<th scope="col">Expense</th>
-					<th scope="col">Vendor</th>
-					<th scope="col">Amount</th>
-					<th scope="col">Action</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="expense" items="${expenses}">
-					<tr>
-						<td><c:out value="${expense.getTitle()}" /></td>
-						<td><c:out value="${expense.getVendor()}" /></td>
-						<td><c:out value="${expense.getAmount()}" /></td>
-						<td> <a href="/expenses/${expense.getId()}/edit">Edit</a> </td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
-		
-		<h2 class="text-center mb-3">Create a Expense!</h2>
-			<div style="width:50%;" class="mx-auto">
-			<form:form
+	<div class="container">
+		<div class="row justify-content-evenly">
+			<div class="px-5 px-sm-0 col-sm-6 col-md-4 mb-5">
+				<h2 class="text-center mb-3">Edit expense!</h2>			
+				<form:form
 					class="row g-2 justify-content-center bg-dark text-light py-4 px-3 rounded"
-					action="/expenses" method="post" modelAttribute="expense">
-
+					action="/expenses/${expense.id}" method="post" modelAttribute="expense">
+					<input type="hidden" name="_method" value="put">
 					<form:label for="title" path="title" class="form-label">Title:</form:label>
 					<form:errors path="title" class="text-danger" />
 					<form:input type="text" path="title" class="form-control"
@@ -66,7 +44,7 @@
 					<button class="btn btn-primary mt-4" type="submit">Save</button>
 				</form:form>
 			</div>
-				
+		</div>
 	</div>
 </body>
 </html>
