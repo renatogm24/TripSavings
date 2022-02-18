@@ -43,6 +43,7 @@
 						id="description" />
 					<button class="btn btn-primary mt-4" type="submit">Save</button>
 				</form:form>
+				<a class="btn btn-primary my-3" href="/expenses">Go back</a>	
 			</div>
 		</div>
 	</div>

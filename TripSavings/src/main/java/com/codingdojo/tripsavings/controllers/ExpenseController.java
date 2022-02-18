@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,9 +34,10 @@ public class ExpenseController {
     }
 
 	@RequestMapping(value = "/expenses", method = RequestMethod.POST)
-	public String create(@Valid @ModelAttribute("expense") Expense expense, BindingResult result) {
+	public String create(@Valid @ModelAttribute("expense") Expense expense, BindingResult result, Model model) {
 		
 		if(result.hasErrors()) {
+			model.addAttribute("expenses", expenseService.allExpenses());
 			return "/expenses/index.jsp";
 		}
 		
@@ -71,5 +73,11 @@ public class ExpenseController {
 			return "redirect:/expenses";
 		}
 	}
+	
+	@DeleteMapping("/expenses/{id}")
+    public String destroy(@PathVariable("id") Long id) {
+		expenseService.deleteExpense(id);
+        return "redirect:/expenses";
+    }
 
 }

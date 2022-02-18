@@ -17,13 +17,12 @@
 <body>
 	<div class="container justify-content-center mx-auto text-center">
 		<ul>
-			<li>Title: <c:out value="${book.getTitle()}"/> </li>
-			<li>Description: <c:out value="${book.getDescription()}"/> </li>
-			<li>Language: <c:out value="${book.getLanguage()}"/> </li>
-			<li>Number of pages: <c:out value="${book.getNumberOfPages()}"/> </li>
-			<li>Created at: <c:out value="${book.getCreatedAt()}"/> </li>
-			<li>Updated at: <c:out value="${book.getUpdatedAt()}"/> </li>
-		</ul>		
+			<li>Title: <c:out value="${expense.getTitle()}"/> </li>
+			<li>Vendor: <c:out value="${expense.getVendor()}"/> </li>
+			<li>Amount: <c:out value="${expense.getAmount()}"/> </li>
+			<li>Description: <c:out value="${expense.getDescription()}"/> </li>
+		</ul>
+		<a class="btn btn-primary" href="/expenses">Go back</a>		
 	</div>
 </body>
 </html>
